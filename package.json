@@ -1,0 +1,20 @@
+{
+  "name": "social-media-app",
+  "version": "1.0.0",
+  "description": "React &amp; MongoDB Social media App from online tutorial ## FreeCodeCamp.org React / GraphQL Course - Build a social media app (MERNG Stack) ### URL - https://www.youtube.com/watch?v=n1mdAPFq2Os ### Description Learn how to create a social media app using MongoDB, Express, Node, React, GraphQL, and Node (the MERNG stack). You will learn how to implement a GraphQL server that uses Node and Express to communicate to a MongoDB Database and fetch and persist data to a social media app back-end.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dletorey/social-media-app.git"
+  },
+  "keywords": [],
+  "author": "Dave Letorey",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dletorey/social-media-app/issues"
+  },
+  "homepage": "https://github.com/dletorey/social-media-app#readme"
+}
