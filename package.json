@@ -16,5 +16,10 @@
   "bugs": {
     "url": "https://github.com/dletorey/social-media-app/issues"
   },
-  "homepage": "https://github.com/dletorey/social-media-app#readme"
+  "homepage": "https://github.com/dletorey/social-media-app#readme",
+  "dependencies": {
+    "apollo-server": "^2.18.2",
+    "graphql": "^15.3.0",
+    "mongoose": "^5.10.9"
+  }
 }
