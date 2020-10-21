@@ -5,7 +5,7 @@ const checkAuth = require('../../util/check-auth');
 module.exports = {
     Mutation: {
         createComment: async (_, { postId, body }, context) =>{
-            const user = checkAuth(context); // this uses the context with checkAuth module to make sure the user has a valid token
+            const username = checkAuth(context); // this uses the context with checkAuth module to make sure the user has a valid token
             if(body.trim() === ''){ // checks to see if the body of the comment is empty
                 throw new UserInputError('Empty comment', {
                     errors: {
@@ -19,7 +19,7 @@ module.exports = {
             if(post) { // if there is a post
                 post.comments.unshift({ // adds new comment to the top of the list
                     body,
-                    username: user.username,
+                    username,
                     createdAt: new Date().toISOString()
                 })
                 await post.save(); // waits until post has been saved
