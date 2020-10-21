@@ -27,7 +27,8 @@ module.exports = {
   },
   Mutation: {
     async createPost(_, { body }, context){
-
+      const user = checkAuth(context); // tghis uses the context with checkAuth module to make sure the user has a valid token
+      
     }
   }
 };
