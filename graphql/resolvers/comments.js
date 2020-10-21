@@ -23,7 +23,7 @@ const Post = require('../../models/Posts');
                 })
                 await post.save(); // waits until post has been saved
                 return post; // returns post
-            }
+            } else throw new UserInputError('Post can not be found');
          }
      }
  }
