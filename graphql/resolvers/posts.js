@@ -1,5 +1,6 @@
 const { getOperationAST } = require('graphql');
 const Post = require('../../models/Posts');
+const checkAuth = require('../../util/check-auth');
 
 module.exports = {
   Query: {
@@ -26,7 +27,7 @@ module.exports = {
   },
   Mutation: {
     async createPost(_, { body }, context){
-      
+
     }
   }
 };
