@@ -21,6 +21,8 @@ const Post = require('../../models/Posts');
                     username: user.username,
                     createdAt: new Date().toISOString()
                 })
+                await post.save(); // waits until post has been saved
+                return post; // returns post
             }
          }
      }
