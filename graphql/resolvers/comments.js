@@ -14,6 +14,14 @@ const Post = require('../../models/Posts');
             }
 
             const post = await Post.findById(postId); // get the current post
+
+            if(post) { // if there is a post
+                post.comments.unshift({ // adds new comment to the top of the list
+                    body,
+                    username: user.username,
+                    createdAt: new Date().toISOString()
+                })
+            }
          }
      }
  }
