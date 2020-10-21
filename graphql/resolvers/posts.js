@@ -38,6 +38,10 @@ module.exports = {
 
       const post = await newPost.save();
       return post;
+    }, 
+    async deletePost(_, { postId }, context){
+      const user = checkAuth(context); // this uses the context with checkAuth module to make sure the user has a valid token
+      
     }
   }
 };
