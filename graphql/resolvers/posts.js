@@ -1,6 +1,7 @@
 const { AuthenticationError, UserInputError } = require('apollo-server');
 
 const { getOperationAST } = require('graphql');
+const { argsToArgsConfig } = require('graphql/type/definition');
 const Post = require('../../models/Posts');
 const checkAuth = require('../../util/check-auth');
 
@@ -30,6 +31,10 @@ module.exports = {
   Mutation: {
     async createPost(_, { body }, context){
       const user = checkAuth(context); // this uses the context with checkAuth module to make sure the user has a valid token
+      // check to see if post body is empty
+      if (args.body.trim() === '') {
+        throw new Error('Post body must not be empty');
+      }
       // create new post
       const newPost = new Post({
         body,
@@ -39,6 +44,11 @@ module.exports = {
       });
 
       const post = await newPost.save();
+
+      context.pubsub.publish('NEW_POST', {
+        newPost: post
+      });
+
       return post;
     }, 
     async deletePost(_, { postId }, context){
@@ -77,6 +87,11 @@ module.exports = {
         await post.save();
         return post;
       } else throw new UserInputError('Post not found');
+    }
+  },
+  Subscription: {
+    newPost: {
+      subscribe: (_, __, { pubsub }) => pubsub.asyncIterator('NEW_POST')
     }
   }
 };
