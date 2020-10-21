@@ -43,7 +43,19 @@ module.exports = {
     }, 
     async deletePost(_, { postId }, context){
       const user = checkAuth(context); // this uses the context with checkAuth module to make sure the user has a valid token
-      
+      try {
+        const post = await Post.findById(postId); // this sets post to be the post with postId
+        if (user.username === post.username) {
+          // checks to see if the post was created by the user
+          await post.delete(); // waits until the post has been deleted from db
+          return 'Post deleted successfully';
+        } else {
+          // this happens if the user didn't create the post
+          throw new AuthenticationError('Action not allowed');
+        }
+      } catch(err) {
+        throw new Error(err);
+      }
     }
   }
 };
