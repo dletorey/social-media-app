@@ -32,7 +32,7 @@ module.exports = {
     async createPost(_, { body }, context){
       const user = checkAuth(context); // this uses the context with checkAuth module to make sure the user has a valid token
       // check to see if post body is empty
-      if (args.body.trim() === '') {
+      if (body.trim() === '') {
         throw new Error('Post body must not be empty');
       }
       // create new post
