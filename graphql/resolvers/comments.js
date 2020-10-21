@@ -13,7 +13,7 @@ const Post = require('../../models/Posts');
                 })
             }
 
-            
+            const post = await Post.findById(postId); // get the current post
          }
      }
  }
