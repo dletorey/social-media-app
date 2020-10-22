@@ -6,9 +6,6 @@ import { Grid } from 'semantic-ui-react'
 function Home() {
     const { loading, data: { getPosts: posts} } = useQuery(FETCH_POSTS_QUERY);
 
-    if(data){
-        console.log(data);
-    }
     return (
         <Grid columns={3} divided>
             <Grid.Row>
@@ -19,7 +16,7 @@ function Home() {
                     <h2>Loading Posts…</h2>
                 ) : (
                     posts && posts.map(post => (
-                        <Grid.Column>
+                        <Grid.Column key={post.id}>
                             <PostCard post={post}/>
                         </Grid.Column>
                     ))
