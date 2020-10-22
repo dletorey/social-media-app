@@ -32,7 +32,7 @@ function AuthProvider(props){
             payload: userData
         });
     }
-    functino logout(){
+    function logout(){
         dispatch({ type: 'LOGOUT'});
     }
 
