@@ -17,7 +17,7 @@ function Register() {
     }
     return (
         <div>
-            <Form onSubmit={onSumit} noValidate>
+            <Form onSubmit={onSubmit} noValidate>
                 <h1>Register Page</h1>
                 <Form.Input 
                     label="Username"
