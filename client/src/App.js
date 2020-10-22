@@ -6,7 +6,7 @@ import 'semantic-ui-css/semantic.min.css';
 import './App.css';
 
 import { AuthProvider } from './context/auth';
-import { AuthRoute } from './util/AuthRoute';
+import AuthRoute from './util/AuthRoute';
 
 import MenuBar from './components/MenuBar';
 import Home from './Pages/Home';
