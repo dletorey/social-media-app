@@ -28,7 +28,22 @@ function PostCard({
         <Card.Description>{body}</Card.Description>
       </Card.Content>
       <Card.Content extra>
-        <p>Button's go here</p>
+      <Button as='div' labelPosition='right' onClick={likePost}>
+        <Button color='red' basic>
+            <Icon name='heart' />
+        </Button>
+        <Label basic color='red' pointing='left'>
+            {likeCount}
+        </Label>
+        </Button>
+        <Button as='div' labelPosition='right' onClick={commentOnPost}>
+        <Button color='blue' basic>
+            <Icon name='comment alternate outline' />
+        </Button>
+        <Label basic color='blue' pointing='left'>
+            {commentCount}
+        </Label>
+        </Button>
       </Card.Content>
     </Card>
   );
