@@ -19,7 +19,11 @@ function PostForm(){
             console.log(result)
             values.body = ''
         }
-    })
+    }); 
+
+    function createPostCallback() {
+        createPost();
+    };
 
     return (
         <Form onSubmit={onSubmit}>
