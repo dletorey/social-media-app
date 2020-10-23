@@ -2,7 +2,7 @@ import React from 'react';
 import { Form, Button, Card, Icon, Label, Image } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import { useForm } from '../util/hooks'
-import { ValuesOfCorrectTypeRule } from 'graphql';
+import { gql } from 'graphql-tag';
 
 function PostForm(){
 
@@ -27,5 +27,29 @@ function PostForm(){
         </Form>
     )
 };
+
+const CREATE_POST_MUTATION = gql`
+    mutation createPost($body: String!){
+        createPost(body: $body){
+            id
+            body
+            createdAt
+            username
+            likeCount
+            likes {
+                id
+                username
+                createdAt
+            }
+            commentCount
+            comments {
+                id
+                username
+                createdAt
+                body
+            }
+        }
+    }
+`
 
 export default PostForm
