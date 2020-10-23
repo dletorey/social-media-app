@@ -6,6 +6,10 @@ import { ValuesOfCorrectTypeRule } from 'graphql';
 
 function PostForm(){
 
+    const { values, onChange, onSubmit } = useForm(createPostCallback, {
+        body: ''
+    })
+
     return (
         <Form onSubmit={onSubmit}>
             <h2>Create new post:</h2>
@@ -14,7 +18,7 @@ function PostForm(){
                     placeholder="Type here…"
                     name="body"
                     onChange={onChange}
-                    value={ValuesOfCorrectTypeRule.body}
+                    value={values.body}
                 />
                 <Button type="submit" color="red">
                     Create
