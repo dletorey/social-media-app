@@ -1,13 +1,24 @@
 import React from 'react';
 import { Form, Button, Card, Icon, Label, Image } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
-import { useForm } from '../util/hooks'
 import { gql } from 'graphql-tag';
+import { useMutation } from '@apollo/react-hooks';
+
+import { useForm } from '../util/hooks'
+
 
 function PostForm(){
 
     const { values, onChange, onSubmit } = useForm(createPostCallback, {
         body: ''
+    });
+
+    const [createPost, { error }] = useMutation(CREATE_POST_MUTATION, {
+        variables: values,
+        update(_, result){
+            console.log(result)
+            values.body = ''
+        }
     })
 
     return (
