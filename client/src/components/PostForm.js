@@ -1,7 +1,6 @@
 import React from 'react';
-import { Form, Button, Card, Icon, Label, Image } from 'semantic-ui-react';
-import { Link } from 'react-router-dom';
-import { gql } from 'graphql-tag';
+import { Form, Button } from 'semantic-ui-react';
+import gql from 'graphql-tag';
 import { useMutation } from '@apollo/react-hooks';
 
 import { useForm } from '../util/hooks'
@@ -65,6 +64,6 @@ const CREATE_POST_MUTATION = gql`
             }
         }
     }
-`
+`;
 
 export default PostForm
