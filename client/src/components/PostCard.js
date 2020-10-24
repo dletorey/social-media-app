@@ -1,18 +1,18 @@
-import React from 'react';
+import React, { uesContext } from 'react';
 import { Button, Card, Icon, Label, Image } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import moment from 'moment';
 
+import { AuthContext } from '../context/auth';
+
 function PostCard({
   post: { body, createdAt, id, username, likeCount, commentCount, likes }
 }) {
+  const { user } = useContext(AuthContext);
   function likePost() {
     console.log('Like post!!');
   }
 
-  function commentOnPost() {
-    console.log('Comment on post!!');
-  }
   return (
     <Card fluid>
       <Card.Content>
