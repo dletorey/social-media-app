@@ -36,13 +36,13 @@ function PostCard({
             {likeCount}
         </Label>
         </Button>
-        <Button as='div' labelPosition='right' onClick={commentOnPost}>
-        <Button color='blue' basic>
-            <Icon name='comment alternate outline' />
-        </Button>
-        <Label basic color='blue' pointing='left'>
-            {commentCount}
-        </Label>
+        <Button as='div' labelPosition='right' as={Link} to={`/posts/${id}`}>
+          <Button color='blue' basic>
+              <Icon name='comment alternate outline' />
+          </Button>
+          <Label basic color='blue' pointing='left'>
+              {commentCount}
+          </Label>
         </Button>
       </Card.Content>
     </Card>
