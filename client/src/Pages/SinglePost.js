@@ -6,22 +6,37 @@ import moment from 'moment';
 
 import { AuthContext } from '../context/auth';
 import LikeButton from '../components/LikeButton';
+import DeleteButton from '../components/DeleteButton';
 
 function SinglePost(props){
     const postId = props.match.params.postId;
     const { user } = useContext(AuthContext);
     console.log(postId);
-    const {data: { getPost }} = useQuery(FETCH_POST_QUERY, {
+    // const { data: { getPosts: posts }={}}
+    const { data: { getPost } = {}} =  useQuery(FETCH_POST_QUERY, {
         variables: {
-            postId
+          postId
         }
-    })
+    });
+
+    function deleteButtonCallback(){
+        props.history.push('/')
+    };
 
     let postMarkup;
     if(!getPost){
         postMarkup = <p>Loading post…</p>
     } else {
-        const { id, body, createdAt, username, comments, likes, likeCount, commentCount} = getPost;
+        const { 
+            id,
+            body,
+            createdAt,
+            username,
+            comments,
+            likes,
+            likeCount,
+            commentCount
+        } = getPost;
 
         postMarkup = (
             <Grid>
@@ -50,13 +65,17 @@ function SinglePost(props){
                                         {commentCount}
                                     </Label>
                                 </Button>
+                                {user && user.username === username && (
+                                    <DeleteButton postId={id} callback={deleteButtonCallback}/>
+                                )}
                             </Card.Content>
                         </Card>
                     </Grid.Column>
                 </Grid.Row>
             </Grid>
-        )
+        );
     };
+    return postMarkup;
 };
 
 const FETCH_POST_QUERY = gql`
