@@ -1,10 +1,18 @@
 import React from 'react';
 import gql from 'graphql-tag';
+import { useQuery } from '@apollo/react-hooks';
 
 function SinglePost(props){
     const postId = props.match.params.postId;
+    console.log(postId);
+    const {data: { getPost }} = useQuery(FETCH_POSTS_QUERY, {
+        variables: {
+            postId
+        }
+    })
 
-    return ()
+    let postMarkup;
+    if(!);
 };
 
 const FETCH_POST_QUERY = gql`
@@ -15,15 +23,15 @@ const FETCH_POST_QUERY = gql`
             id
             body
             comments{
-            id
-            createdAt
-            username
-            body
+                id
+                createdAt
+                username
+                body
             }
             likes{
-            id
-            username
-            createdAt
+                id
+                username
+                createdAt
             }
             likeCount
             commentCount
