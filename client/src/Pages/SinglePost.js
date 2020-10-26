@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import gql from 'graphql-tag';
 import { useQuery } from '@apollo/react-hooks';
-import { Button, Card, Grid, Icon, Image, Label, Transition } from 'semantic-ui-react';
+import { Button, Card, Grid, Icon, Image, Label } from 'semantic-ui-react';
 import moment from 'moment';
 
 import { AuthContext } from '../context/auth';
@@ -70,6 +70,18 @@ function SinglePost(props){
                                 )}
                             </Card.Content>
                         </Card>
+                        {comments.map((comment) => (
+                        <Card fluid key={comment.id}>
+                            <Card.Content>
+                                {user && user.username === comment.username && (
+                                    <DeleteButton postId={id} commentId={comment.id}/>
+                                )}
+                            <Card.Header>{comment.username}</Card.Header>
+                            <Card.Meta>{moment(comment.createdAt).fromNow()}</Card.Meta>
+                            <Card.Description>{comment.body}</Card.Description>
+                            </Card.Content>
+                        </Card>
+                        ))}
                     </Grid.Column>
                 </Grid.Row>
             </Grid>
